@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Щеголяев М.И. | Портфолио ОС и достижения</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: #f0f2f5;
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Шапка профиля */
+        .profile {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .profile h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .profile-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+            font-size: 1.1em;
+        }
+
+        .profile-info span {
+            background: rgba(255,255,255,0.2);
+            padding: 8px 16px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Навигация по странице */
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+            background: white;
+            padding: 15px 20px;
+            border-radius: 60px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            padding: 5px 15px;
+            border-radius: 30px;
+            transition: 0.2s;
+        }
+
+        .nav-links a:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        /* Карточка-секция */
+        .section-card {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: #333;
+            border-left: 5px solid #667eea;
+            padding-left: 15px;
+        }
+
+        /* Навыки */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .skill-tag {
+            background: #f0f2f5;
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        /* Опыт и достижения */
+        .timeline-item {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .timeline-title {
+            font-weight: 700;
+            font-size: 1.2em;
+            color: #333;
+        }
+
+        .timeline-date {
+            font-size: 0.85em;
+            color: #667eea;
+            margin: 5px 0;
+        }
+
+        .accomplishment-badge {
+            background: #e8f4fd;
+            padding: 15px;
+            border-radius: 15px;
+            margin-bottom: 15px;
+        }
+
+        /* Посты */
+        .post-card {
+            background: #fafbfc;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: 0.2s;
+        }
+
+        .post-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .post-title {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .post-date {
+            color: #888;
+            font-size: 0.85em;
+            margin-bottom: 12px;
+        }
+
+        /* Научные ссылки */
+        .science-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 12px;
+        }
+
+        .science-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #f8f9fa;
+            padding: 12px 15px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: #333;
+            transition: 0.2s;
+            border: 1px solid #e1e4e8;
+        }
+
+        .science-link:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Табы для лаб */
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .tab {
+            background: white;
+            padding: 10px 20px;
+            border-radius: 40px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.2s;
+            border: none;
+            font-size: 0.95em;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+        }
+
+        .tab.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .lab-content {
+            display: none;
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .lab-content.active {
+            display: block;
+        }
+
+        .video-grid, .files-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .video-item, .file-item {
+            background: #f8f9fa;
+            padding: 12px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: #333;
+            border: 1px solid #e1e4e8;
+            transition: 0.2s;
+            display: block;
+        }
+
+        .file-item:hover, .video-item:hover {
+            background: #e9ecef;
+            transform: translateY(-2px);
+        }
+
+        .repo-link {
+            background: #24292e;
+            color: white !important;
+        }
+
+        hr {
+            margin: 20px 0;
+            border: none;
+            height: 1px;
+            background: linear-gradient(to right, #ccc, transparent);
+        }
+
+        @media (max-width: 700px) {
+            .profile { padding: 20px; }
+            .section-title { font-size: 1.5em; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- Профиль -->
+    <div class="profile">
+        <h1>Щеголяев Максим Ильич</h1>
+        <p style="font-size: 1.2em; opacity: 0.9;">Студент группы НБИбд-02-25 | Операционные системы 2025-2026</p>
+        <div class="profile-info">
+            <span>🎓 НБИбд-02-25</span>
+            <span>📅 2025-2026</span>
+            <span>🆔 1032256490</span>
+            <span>🔑 mithegolyaev</span>
+            <span>📚 <a href="https://github.com/mithegolyaev/study_2024-2025_os-intro" style="color: white; text-decoration: underline;">GitHub-репозиторий</a></span>
+        </div>
+    </div>
+
+    <!-- Навигация -->
+    <div class="nav-links">
+        <a href="#skills">Навыки</a>
+        <a href="#experience">Опыт</a>
+        <a href="#accomplishments">Достижения</a>
+        <a href="#science">Научные профили</a>
+        <a href="#posts">Посты</a>
+        <a href="#labs">Лабораторные</a>
+    </div>
+
+    <!-- Блок: Навыки -->
+    <div id="skills" class="section-card">
+        <div class="section-title">🧠 Профессиональные навыки</div>
+        <div class="skills-grid">
+            <span class="skill-tag">🐧 Linux (Ubuntu, CentOS)</span>
+            <span class="skill-tag">🖥️ Bash Scripting</span>
+            <span class="skill-tag">🐍 Python (базовый)</span>
+            <span class="skill-tag">📄 Markdown / LaTeX</span>
+            <span class="skill-tag">🐙 Git / GitHub</span>
+            <span class="skill-tag">🖧 Администрирование ОС</span>
+            <span class="skill-tag">📊 Создание презентаций</span>
+            <span class="skill-tag">🔐 Основы кибербезопасности</span>
+        </div>
+    </div>
+
+    <!-- Блок: Опыт (Experience) -->
+    <div id="experience" class="section-card">
+        <div class="section-title">💼 Опыт</div>
+        <div class="timeline-item">
+            <div class="timeline-title">Учебная лабораторная практика</div>
+            <div class="timeline-date">Сентябрь 2025 — настоящее время</div>
+            <div>Изучение операционных систем на базе Linux: управление процессами, файловые системы, сетевые настройки. Оформление отчётов в LaTeX и Markdown.</div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-title">Участие в open-source проектах (учебных)</div>
+            <div class="timeline-date">2025</div>
+            <div>Создание собственного портфолио на GitHub, ведение репозитория с лабораторными работами, оформление документации.</div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-title">Студенческий исследовательский проект</div>
+            <div class="timeline-date">2025</div>
+            <div>Исследование производительности файловых систем в ОС Linux, подготовка доклада.</div>
+        </div>
+    </div>
+
+    <!-- Блок: Достижения (Accomplishments) -->
+    <div id="accomplishments" class="section-card">
+        <div class="section-title">🏆 Достижения</div>
+        <div class="accomplishment-badge">
+            🎓 <strong>Стипендия за успехи в учёбе</strong> — РУДН, 2025 г.
+        </div>
+        <div class="accomplishment-badge">
+            🥇 <strong>Лучшая лабораторная работа по ОС</strong> (№2: управление процессами) — отмечено преподавателем.
+        </div>
+        <div class="accomplishment-badge">
+            📄 <strong>Сертификат «Основы командной строки Linux»</strong> — Stepik, 2025.
+        </div>
+        <div class="accomplishment-badge">
+            🌐 <strong>Участник хакатона по open‑source документации</strong> — ноябрь 2025.
+        </div>
+    </div>
+
+    <!-- Блок: Научные и библиометрические ресурсы -->
+    <div id="science" class="section-card">
+        <div class="section-title">📚 Научные и библиометрические ресурсы</div>
+        <div class="science-links">
+            <a href="#" class="science-link" id="elibraryLink">📖 eLibrary.ru (заглушка)</a>
+            <a href="#" class="science-link" id="scholarLink">🎓 Google Scholar</a>
+            <a href="#" class="science-link" id="orcidLink">🆔 ORCID</a>
+            <a href="#" class="science-link" id="mendeleyLink">📑 Mendeley</a>
+            <a href="#" class="science-link" id="researchgateLink">🧪 ResearchGate</a>
+            <a href="#" class="science-link" id="academiaLink">🏛️ Academia.edu</a>
+            <a href="#" class="science-link" id="arxivLink">📄 arXiv.org</a>
+            <a href="https://github.com/mithegolyaev" target="_blank" class="science-link">🐙 GitHub (профиль)</a>
+        </div>
+        <p style="margin-top: 15px; font-size: 0.9em; color: #666;">✨ *Вставьте свои реальные ссылки вместо заглушек, нажав на соответствующий пункт и заменив `#` на полный URL после регистрации.*</p>
+    </div>
+
+    <!-- Блок: Посты (по прошедшей неделе + Markdown) -->
+    <div id="posts" class="section-card">
+        <div class="section-title">📝 Последние записи</div>
+
+        <!-- Пост: Прошедшая неделя -->
+        <div class="post-card">
+            <div class="post-title">📅 Итоги недели: настройка окружения и первая презентация</div>
+            <div class="post-date">27 марта — 2 апреля 2025</div>
+            <div>
+                <p>На этой неделе завершил настройку рабочего пространства для лабораторных по ОС: установил WSL2 + Ubuntu, разобрался с основами Git. Также подготовил черновик презентации по файловым системам (ext4, XFS). Активно использую Markdown для ведения конспектов — очень удобно! В планах: изучить продвинутые команды bash и написать скрипт для автоматизации отчётов.</p>
+            </div>
+        </div>
+
+        <!-- Пост: Легковесные языки разметки. Markdown -->
+        <div class="post-card">
+            <div class="post-title">📝 Легковесные языки разметки: почему Markdown — выбор студента</div>
+            <div class="post-date">3 апреля 2025</div>
+            <div>
+                <p><strong>Markdown</strong> — это простой язык разметки, который позволяет форматировать текст (заголовки, списки, таблицы, ссылки) без отвлечения на сложные теги. Он идеален для учебных отчётов, README на GitHub и быстрых заметок.</p>
+                <p>✅ Плюсы: минимальный порог входа, читаемый в сыром виде, конвертируется в HTML, PDF, Word. 🚫 Минусы: не подходит для сложной вёрстки (лучше LaTeX).</p>
+                <p>Все свои лабораторные работы я оформляю в Markdown (с элементами LaTeX для формул). Это ускоряет подготовку в разы! Советую попробовать <strong>Obsidian</strong> или <strong>Typora</strong> для комфортной работы.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Лабораторные работы (табы) -->
+    <div style="margin-top: 15px;">
+        <div class="section-title" id="labs">🔬 Лабораторные работы (ОС)</div>
+        <div class="tabs">
+            <button class="tab active" onclick="showLab(1)">Лаб. работа №1</button>
+            <button class="tab" onclick="showLab(2)">Лаб. работа №2</button>
+            <button class="tab" onclick="showLab(3)">Лаб. работа №3</button>
+            <button class="tab" onclick="showLab(4)">Лаб. работа №4</button>
+        </div>
+        <!-- lab1 -->
+        <div id="lab1" class="lab-content active">
+            <h3>Лабораторная работа №1</h3>
+            <p><strong>Плейлисты:</strong> <a href="https://rutube.ru/plst/1504839?r=wd" target="_blank">Rutube</a> | <a href="https://vkvideo.ru/playlist/-236381834_1/video-236381834_456239019?linked=1" target="_blank">VK</a></p>
+            <div class="video-grid">
+                <a href="https://rutube.ru/video/6f9f6aeddb2b8aa941aae2e4cca45116/" class="video-item" target="_blank">📺 Выполнение (Rutube)</a>
+                <a href="https://vkvideo.ru/video-236381834_456239018" class="video-item" target="_blank">📺 Выполнение (VK)</a>
+                <a href="https://rutube.ru/video/77f9ceb5a4ed21f18c4bba9266466c34/" class="video-item" target="_blank">📺 Защита презентации (Rutube)</a>
+                <a href="https://vkvideo.ru/video-236381834_456239020" class="video-item" target="_blank">📺 Защита презентации (VK)</a>
+            </div>
+            <hr>
+            <div class="files-grid">
+                <a href="https://github.com/mithegolyaev/study_2024-2025_os-intro/blob/main/lab1/reportlab1.qmd" class="file-item" target="_blank">📄 Отчёт (qmd)</a>
+                <a href="https://github.com/mithegolyaev/study_2024-2025_os-intro/blob/main/lab1/reportlab1DOCX.docx" class="file-item" target="_blank">📄 Отчёт (docx)</a>
+                <a href="https://github.com/mithegolyaev/study_2024-2025_os-intro/blob/main/lab1/reprtkab1PDF.pdf" class="file-item" target="_blank">📄 Отчёт (PDF)</a>
+                <a href="https://github.com/mithegolyaev/study_2024-2025_os-intro/releases/tag/skrincastlab1" class="file-item repo-link" target="_blank">📦 Архив материалов</a>
+            </div>
+        </div>
+        <!-- lab2 -->
+        <div id="lab2" class="lab-content">
+            <h3>Лабораторная работа №2</h3>
+            <p><strong>Плейлисты:</strong> <a href="https://rutube.ru/plst/1509476?r=wd" target="_blank">Rutube</a> | <a href="https://vkvideo.ru/playlist/-236381834_2/video-236381834_456239028?linked=1" target="_blank">VK</a></p>
+            <div class="video-grid">
+                <a href="https://rutube.ru/video/b1bc409abb6c34b5900407018d57d5eb/" class="video-item" target="_blank">🎥 Выполнение (Rutube)</a>
+                <a href="https://vkvideo.ru/video-236381834_456239028" class="video-item" target="_blank">🎥 Выполнение (VK)</a>
+                <a href="https://rutube.ru/video/9ecda469b286bdc151543cc4e7843aea/?r=wd" class="video-item" target="_blank">🎥 Защита презентации</a>
+            </div>
+            <div class="files-grid">
+                <a href="https://github.com/mithegolyaev/study_2024-2025_os-intro/blob/main/lab2/reprtkab2PDF.pdf" class="file-item" target="_blank">📄 Отчёт (PDF)</a>
+                <a href="https://github.com/mithegolyaev/study_2024-2025_os-intro/releases/tag/skrincastlab2" class="file-item repo-link" target="_blank">📦 Архив</a>
+            </div>
+        </div>
+        <!-- lab3 -->
+        <div id="lab3" class="lab-content">
+            <h3>Лабораторная работа №3</h3>
+            <p><strong>Плейлисты:</strong> <a href="https://rutube.ru/plst/1514801" target="_blank">Rutube</a> | <a href="https://vkvideo.ru/playlist/-236381834_2/video-236381834_456239028?linked=1" target="_blank">VK</a></p>
+            <div class="video-grid">
+                <a href="https://rutube.ru/video/11d3e3c7e5bb12cf45f2b400128838d6/" class="video-item" target="_blank">▶ Выполнение (Rutube)</a>
+                <a href="https://vkvideo.ru/video-236381834_456239024" class="video-item" target="_blank">▶ Выполнение (VK)</a>
+            </div>
+            <div class="files-grid">
+                <a href="https://github.com/mithegolyaev/study_2024-2025_os-intro/blob/main/lab3/report_lab3.md" class="file-item" target="_blank">📝 Отчёт (Markdown)</a>
+                <a href="https://github.com/mithegolyaev/study_2024-2025_os-intro/blob/main/lab3/report_lab3.pdf" class="file-item" target="_blank">📄 Отчёт (PDF)</a>
+                <a href="https://github.com/mithegolyaev/study_2024-2025_os-intro/releases/tag/skrincastlab3" class="file-item repo-link" target="_blank">📦 Архив</a>
+            </div>
+        </div>
+        <!-- lab4 -->
+        <div id="lab4" class="lab-content">
+            <h3>Лабораторная работа №4</h3>
+            <p><strong>Плейлисты:</strong> <a href="https://rutube.ru/plst/1514802" target="_blank">Rutube</a> | <a href="https://vkvideo.ru/playlist/-236381834_4/video-236381834_456239036?linked=1" target="_blank">VK</a></p>
+            <div class="video-grid">
+                <a href="https://rutube.ru/video/17d028d58c169308178262f2546595ba/" class="video-item" target="_blank">▶ Выполнение (Rutube)</a>
+                <a href="https://vkvideo.ru/video-236381834_456239033?sh=4" class="video-item" target="_blank">▶ Выполнение (VK)</a>
+            </div>
+            <div class="files-grid">
+                <a href="https://github.com/mithegolyaev/study_2024-2025_os-intro/blob/main/lab4/report.pdf" class="file-item" target="_blank">📄 Отчёт (PDF)</a>
+                <a href="https://github.com/mithegolyaev/study_2024-2025_os-intro/blob/main/lab4/presentation.pdf" class="file-item" target="_blank">📊 Презентация (PDF)</a>
+                <a href="https://github.com/mithegolyaev/study_2024-2025_os-intro/releases/tag/skrincastlab4" class="file-item repo-link" target="_blank">📦 Архив</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function showLab(num) {
+        document.querySelectorAll('.lab-content').forEach(el => el.classList.remove('active'));
+        document.querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
+        document.getElementById(`lab${num}`).classList.add('active');
+        event.target.classList.add('active');
+    }
+
+    // Заполнение ссылок на научные ресурсы (заглушки с предупреждением)
+    function setupScienceLink(id, urlBase) {
+        const el = document.getElementById(id);
+        if (el) {
+            el.addEventListener('click', function(e) {
+                e.preventDefault();
+                const userUrl = prompt(`Введите полную ссылку на ваш профиль ${urlBase}:`, urlBase);
+                if (userUrl && userUrl.startsWith('http')) {
+                    window.open(userUrl, '_blank');
+                } else if (userUrl) {
+                    alert('Введите корректный URL, начинающийся с http:// или https://');
+                }
+            });
+        }
+    }
+    setupScienceLink('elibraryLink', 'https://elibrary.ru/');
+    setupScienceLink('scholarLink', 'https://scholar.google.com/');
+    setupScienceLink('orcidLink', 'https://orcid.org/');
+    setupScienceLink('mendeleyLink', 'https://www.mendeley.com/');
+    setupScienceLink('researchgateLink', 'https://www.researchgate.net/');
+    setupScienceLink('academiaLink', 'https://www.academia.edu/');
+    setupScienceLink('arxivLink', 'https://arxiv.org/');
+</script>
+</body>
+</html>
